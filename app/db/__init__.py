@@ -14,6 +14,6 @@ def get_db() -> Session:
     try:
         yield db
     finally:
-        db.close()
+        db.rollback()
 
 from app.db.ddos_attacks_time import DDoSAttack

@@ -1,22 +1,25 @@
 from fastapi import FastAPI
 from uvicorn import Config, Server
+import logging
 from app.api.api import router
 from app.utils import setup_logging
 from app.init_migrations import create_database
+from config import host, port
 
 app = FastAPI()
 
 
 def build_app() -> Server:
+    logging.info("Запуск приложения")
     app.include_router(router, prefix="")
     setup_logging()  # Инициализация логирования
-    create_database()  # Инициализация миграций alembic
+    create_database()  # Применение миграций alembic
 
     server = Server(
         Config(
             app,
-            host='127.0.0.1',
-            port=9313
+            host=host,
+            port=port
         )
     )
     return server

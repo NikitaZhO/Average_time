@@ -1,4 +1,5 @@
 import os
+import logging
 from alembic import config
 from alembic import command
 from app.db import engine
@@ -14,6 +15,7 @@ def _alembic_cfg() -> config.Config:
 
 
 def create_database():
+    logging.info("Применение миграций")
     if not os.path.exists('./ddos.db'):
         try:
             cfg = _alembic_cfg()
@@ -21,4 +23,5 @@ def create_database():
                 cfg.attributes['connection'] = connection
                 command.upgrade(cfg, "head")
         except Exception as e:
+            logging.error(f"Ошибка во время применения миграций - {str(e)}")
             raise e

@@ -6,7 +6,20 @@ Average time
 
 Для клонирования репозитория необходима команда:
 
-`$ git clone https://github.com/`
+`$ https://github.com/NikitaZhO/Average_time.git`
+
+Установка виртуального окружения:
+
+win - `$ python -m venv venv`; 
+linux - `$ python3 -m venv venv`
+
+Активация виртуального окружения:
+
+`$ \venv\Scripts\activate`
+
+Для клонирования репозитория необходима команда:
+
+`$ https://github.com/NikitaZhO/Average_time.git`
 
 Для установки зависимостей введите:
 
